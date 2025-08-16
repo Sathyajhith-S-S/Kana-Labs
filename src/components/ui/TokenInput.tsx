@@ -24,14 +24,18 @@ export function TokenInput({ label, chain, token, onTokenSelectClick, isFromInpu
                     </div>
                     <input
                         type="text"
+                        inputMode="decimal"
                         placeholder="0.00"
                         className="mt-4 bg-transparent text-3xl font-bold w-full focus:outline-none placeholder:text-muted-foreground"
                         disabled={!isFromInput}
                         value={value}
-                        onChange={(e) => onValueChange && onValueChange(e.target.value)}
-                    />
+                        onChange={(e) => {
+                            const regex = /^\d*\.?\d*$/;
+                            if (e.target.value === '' || regex.test(e.target.value)) {
+                                onValueChange?.(e.target.value);
+                            }
+                        }} />
                 </div>
-
                 <Button
                     onClick={onTokenSelectClick}
                     variant="secondary"

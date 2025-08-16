@@ -76,7 +76,7 @@ const TokenSelectList = ({ onSelect, selectedChain }: { onSelect: (token: Token)
                 <img
                     src={token.logo}
                     alt={token.name}
-                    className={`w-7 h-7 rounded-full transition-all duration-200 ${token.symbol === selectedChain.symbol ? 'scale-75' : 'hover:scale-110'
+                    className={`w-7 h-7 rounded-full transition-all duration-200 ${token.symbol === selectedChain.symbol ? 'scale-75' : 'hover:scale-75'
                         }`}
                 />
             </button>
@@ -114,10 +114,10 @@ export default function SwapPage() {
 
     return (
         <div className="container mx-auto flex flex-col items-center p-4 pt-6">
-            <div className="w-full max-w-lg mx-auto bg-card rounded-2xl p-4 sm:p-6 space-y-4 shadow-lg">
+            <div className="w-full max-w-lg mx-auto bg-card rounded-2xl p-4 sm:p-6 space-y-6 shadow-lg">
                 <SwapTypeTabs mode={swapMode} onModeChange={handleModeChange} />
                 <div className="flex items-center justify-between">
-                    <h2 className="text-lg font-heading font-bold">
+                    <h2 className="font-heading font-semibold">
                         {swapMode === 'same-chain' ? 'Same-chain Swap' : 'Cross-chain Swap'}
                     </h2>
                     <div className="flex items-center gap-5 text-muted-foreground">
@@ -128,7 +128,7 @@ export default function SwapPage() {
                 </div>
 
                 {swapMode === 'same-chain' && (
-                    <TokenSelectList onSelect={handleTokenSelection} selectedChain={chain} />
+                        <TokenSelectList onSelect={handleTokenSelection} selectedChain={chain} />
                 )}
 
                 <div className="space-y-2 relative">
@@ -147,7 +147,7 @@ export default function SwapPage() {
                             onClick={handleSwap}
                             variant="secondary"
                             size="sm"
-                            className="rounded-full p-2 h-auto w-auto"
+                            className="group rounded-full p-2 h-auto w-auto"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -159,6 +159,7 @@ export default function SwapPage() {
                                 strokeWidth="2.5"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
+                                className="transition-transform duration-200 group-hover:rotate-180"
                             >
                                 <path d="M8 18V6l-4 4" />
                                 <path d="M16 6v12l4-4" />
@@ -175,11 +176,14 @@ export default function SwapPage() {
                         value={''}
                     />
                 </div>
-                <Button size="lg" className="w-full h-14 text-lg font-bold">
+                <Button
+                    size="lg"
+                    className="w-full h-14 text-lg font-bold bg-background text-primary border-primary border border-b-4 
+                    rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 hover:bg-background"
+                >
                     Swap now
                 </Button>
             </div>
-
             <div className="w-full max-w-lg mx-auto mt-4">
                 <SwapDetailsAccordion />
             </div>
