@@ -34,7 +34,7 @@ const SwapDetailsAccordion = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="bg-muted/50 rounded-lg border">
+        <div className="bg-card rounded-lg shadow-lg">
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="w-full flex justify-between items-center p-3 text-sm font-medium"
@@ -42,7 +42,7 @@ const SwapDetailsAccordion = () => {
                 <span className="ms-4 text-lg font-heading">Additional details</span>
                 <FontAwesomeIcon
                     icon={faChevronDown}
-                    className={`transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                    className={`transition-transform me-4 duration-200 ${isOpen ? 'rotate-180' : ''}`}
                 />
             </button>
 
@@ -50,16 +50,18 @@ const SwapDetailsAccordion = () => {
                 className={`transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? 'max-h-40' : 'max-h-0'
                     }`}
             >
-                <div className="p-3 border-t space-y-3">
-                    <div className="flex justify-between items-center text-sm">
-                        <span className="text-muted-foreground ms-4">Slippage tolerance</span>
-                        <div className="flex items-center gap-2">
-                            <Button variant="secondary" size="sm" className="h-7">0.5%</Button>
+                <div className="p-3 mx-4 pt-0">
+                    <div className="border-t pt-3 space-y-3">
+                        <div className="flex justify-between items-center text-sm">
+                            <span className="text-muted-foreground">Slippage tolerance</span>
+                            <div className="flex items-center gap-2">
+                                <Button variant="secondary" size="sm" className="h-7">0.5%</Button>
+                            </div>
                         </div>
-                    </div>
-                    <div className="flex justify-between items-center text-sm">
-                        <span className="text-muted-foreground ms-4">Liquidity source</span>
-                        <span className="font-semibold me-1">OKX</span>
+                        <div className="flex justify-between items-center text-sm">
+                            <span className="text-muted-foreground">Liquidity source</span>
+                            <span className="font-semibold me-1">OKX</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -68,13 +70,13 @@ const SwapDetailsAccordion = () => {
 };
 
 const TokenSelectList = ({ onSelect, selectedChain }: { onSelect: (token: Token) => void; selectedChain: Token; }) => (
-    <div className="flex items-center gap-3 overflow-x-auto pb-2">
+    <div className="flex items-center gap-4 overflow-x-auto pb-2">
         {TOKENS.map((token) => (
             <button key={token.symbol} onClick={() => onSelect(token)} className="flex-shrink-0">
                 <img
                     src={token.logo}
                     alt={token.name}
-                    className={`w-7 h-7 rounded-full transition-all duration-200 ${token.symbol === selectedChain.symbol ? 'scale-75 opacity-50' : 'hover:scale-110'
+                    className={`w-7 h-7 rounded-full transition-all duration-200 ${token.symbol === selectedChain.symbol ? 'scale-75' : 'hover:scale-110'
                         }`}
                 />
             </button>
@@ -111,8 +113,8 @@ export default function SwapPage() {
     };
 
     return (
-        <div className="container mx-auto flex flex-col items-center p-4 pt-10">
-            <div className="w-full max-w-lg mx-auto bg-card border rounded-2xl p-4 sm:p-6 space-y-4 shadow-lg">
+        <div className="container mx-auto flex flex-col items-center p-4 pt-6">
+            <div className="w-full max-w-lg mx-auto bg-card rounded-2xl p-4 sm:p-6 space-y-4 shadow-lg">
                 <SwapTypeTabs mode={swapMode} onModeChange={handleModeChange} />
                 <div className="flex items-center justify-between">
                     <h2 className="text-lg font-heading font-bold">
