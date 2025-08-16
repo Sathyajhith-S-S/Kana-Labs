@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&family=Urbanist:wght@700&display=swap');
+
+    :root {
+        /* Fonts */
+        --font-manrope: 'Manrope', sans-serif;
+        --font-urbanist: 'Urbanist', sans-serif;
+
+        /* Light Theme Colors */
+        --background: 240 5% 96%;
+        --foreground: 222.2 84% 4.9%;
+        --card: 255 100% 100%;
+        --primary: 173 98% 39%;
+        --primary-foreground: 210 40% 98%;
+        --muted: 220 14% 96%;
+        --muted-foreground: 215.4 16.3% 46.9%;
+    }
+
+    .dark {
+        /* Dark Theme Colors */
+        --background: 222.2 84% 4.9%;
+        --foreground: 210 40% 98%;
+        --card: 224 71% 4%;
+        --primary: 173 98% 39%;
+        --primary-foreground: 222.2 47.4% 11.2%;
+        --muted: 217.2 32.6% 17.5%;
+        --muted-foreground: 215 20.2% 65.1%;
+    }
+}
+
+@layer base {
+    body {
+        @apply bg-background text-foreground;
+        font-family: var(--font-manrope);
+    }
+}
