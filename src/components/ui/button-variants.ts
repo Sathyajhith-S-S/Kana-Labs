@@ -1,4 +1,3 @@
-// src/components/ui/button-variants.ts
 import { cva } from "class-variance-authority";
 
 export const buttonVariants = cva(
@@ -15,6 +14,8 @@ export const buttonVariants = cva(
                 default: "h-10 px-4 py-2",
                 sm: "h-9 rounded-md px-3",
                 lg: "h-12 rounded-lg px-8 text-base",
+                xs: "h-6 rounded-md px-2 text-xs",
+                xxs: "h-4 rounded px-1 py-1 text-xs",
             },
         },
         defaultVariants: {

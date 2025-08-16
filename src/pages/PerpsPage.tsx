@@ -3,6 +3,7 @@ import { OrderForm } from "@/components/perps/OrderForm";
 import { useTheme } from "@/hooks/useTheme";
 
 export default function PerpsPage() {
+    document.title = "Kana Perps"
     const { toggleTheme } = useTheme();
 
     return (
