@@ -19,10 +19,10 @@ const feesData = [
 
 const PillTabs = ({ mode, setMode }: { mode: MarginMode, setMode: (mode: MarginMode) => void }) => (
     <div className="grid grid-cols-2 gap-2 text-xs">
-        <button onClick={() => setMode('isolated')} className={`py-2 bg-card border border-black/10 dark:border-white/10 rounded-lg transition-colors ${mode === 'isolated' ? 'bg-muted text-foreground font-semibold' : 'text-muted-foreground'}`}>
+        <button onClick={() => setMode('isolated')} className={`py-2 bg-card border border-black/10 dark:border-white/10 rounded-lg transition-colors ${mode === 'isolated' ? 'bg-muted text-foreground font-semibold' : 'text-muted-foreground hover:bg-muted/50 hover:text-foreground'}`}>
             Isolated
         </button>
-        <button onClick={() => setMode('hedge')} className={`py-2 bg-card border border-black/10 dark:border-white/10 rounded-lg transition-colors ${mode === 'hedge' ? 'bg-muted text-foreground font-semibold' : 'text-muted-foreground'}`}>
+        <button onClick={() => setMode('hedge')} className={`py-2 bg-card border border-black/10 dark:border-white/10 rounded-lg transition-colors ${mode === 'hedge' ? 'bg-muted text-foreground font-semibold' : 'text-muted-foreground hover:bg-muted/50 hover:text-foreground'}`}>
             Hedge
         </button>
     </div>
