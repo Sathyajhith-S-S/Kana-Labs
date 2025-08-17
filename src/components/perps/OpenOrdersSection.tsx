@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { CardShell } from "./CardShell";
 import { Button } from "@/components/ui/Button";
 
@@ -10,18 +11,25 @@ const TABS = [
     "Deposit/Withdraw History",
 ] as const;
 
+type Tab = typeof TABS[number];
+
 export function OpenOrdersSection() {
+    const [activeTab, setActiveTab] = useState<Tab>("Open Orders");
+
     return (
         <CardShell>
-            <div className="px-4 pt-3">
-                <div className="flex items-center gap-2 overflow-x-auto">
-                    {TABS.map((t, i) => (
+            <div className="border-b border-white/10">
+                <div className="flex items-center overflow-x-auto">
+                    {TABS.map((t) => (
                         <button
                             key={t}
-                            className={`whitespace-nowrap rounded-md border px-3 py-1.5 text-xs ${i === 0
-                                    ? "bg-primary text-primary-foreground border-primary"
-                                    : "bg-muted text-foreground/80 hover:bg-muted/80"
-                                }`}
+                            onClick={() => setActiveTab(t)}
+                            className={`whitespace-nowrap px-8 py-3 text-xs font-medium transition-colors 
+                                ${activeTab === t
+                                    ? "bg-muted text-foreground border-b-2 border-primary font-semibold"
+                                    : "text-muted-foreground hover:bg-muted/50 hover:text-foreground"
+                                }`
+                            }
                         >
                             {t}
                         </button>
@@ -29,10 +37,16 @@ export function OpenOrdersSection() {
                 </div>
             </div>
 
-            <div className="p-6 text-center text-sm text-muted-foreground border-t">
-                <p>Sign in to see your Open orders</p>
-                <div className="mt-2">
-                    <Button size="sm">Sign in</Button>
+            <div className="p-6 h-32 flex flex-col items-center justify-center text-center text-xs text-muted-foreground">
+                <p>Sign in to see your {activeTab}</p>
+                <div className="mt-4">
+                    <Button
+                    size="sm"
+                    className="w-full h-10 text-xs font-bold bg-background text-primary border-primary border border-b-4 
+                    rounded-lg shadow-lg hover:shadow-xl hover:animate-bounce-subtle hover:bg-background"
+                >
+                    Sign in
+                </Button>
                 </div>
             </div>
         </CardShell>
