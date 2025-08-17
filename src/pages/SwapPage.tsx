@@ -11,7 +11,7 @@ const SwapTypeTabs = ({ mode, onModeChange }: { mode: SwapMode; onModeChange: (m
     <div className="flex">
         <Button
             size="sm"
-            className={`me-2 flex-1 group ${mode === 'same-chain' ? 'text-foreground font-bold' : 'text-muted-foreground'}`}
+            className={`me-2 border border-black/10 dark:border-white/10 flex-1 group ${mode === 'same-chain' ? 'text-foreground font-bold' : 'text-muted-foreground'}`}
             variant={mode === 'same-chain' ? 'secondary' : 'ghost'}
             onClick={() => onModeChange('same-chain')}
         >
@@ -23,7 +23,7 @@ const SwapTypeTabs = ({ mode, onModeChange }: { mode: SwapMode; onModeChange: (m
         </Button>
         <Button
             size="sm"
-            className={`flex-1 group ${mode === 'cross-chain' ? 'text-foreground font-bold' : 'text-muted-foreground'}`}
+            className={`flex-1 border border-black/10 dark:border-white/10 group ${mode === 'cross-chain' ? 'text-foreground font-bold' : 'text-muted-foreground'}`}
             variant={mode === 'cross-chain' ? 'secondary' : 'ghost'}
             onClick={() => onModeChange('cross-chain')}
         >
@@ -40,7 +40,7 @@ const SwapDetailsAccordion = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="bg-card rounded-lg shadow-lg">
+        <div className="bg-card rounded-2xl shadow-2xl">
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="w-full flex justify-between items-center p-3 text-sm font-medium"
@@ -57,7 +57,7 @@ const SwapDetailsAccordion = () => {
                     }`}
             >
                 <div className="p-3 mx-4 pt-0">
-                    <div className="border-t pt-3 space-y-3">
+                    <div className="border-t  border-black/10 dark:border-white/10 pt-3 space-y-3">
                         <div className="flex justify-between items-center text-sm">
                             <span className="text-muted-foreground">Slippage tolerance</span>
                             <div className="flex items-center gap-2">
@@ -120,7 +120,7 @@ export default function SwapPage() {
 
     return (
         <div className="container mx-auto flex flex-col items-center p-4">
-            <div className="w-full max-w-lg mx-auto bg-card rounded-2xl p-4 sm:p-6 space-y-6 shadow-lg">
+            <div className="w-full max-w-lg mx-auto bg-card rounded-2xl p-4 sm:p-6 space-y-6 shadow-lg border border-black/10 dark:border-white/10">
                 <SwapTypeTabs mode={swapMode} onModeChange={handleModeChange} />
                 <div className="flex items-center justify-between">
                     <h2 className="font-heading text-muted-foreground font-bold text-lg">
@@ -153,7 +153,7 @@ export default function SwapPage() {
                             onClick={handleSwap}
                             variant="secondary"
                             size="sm"
-                            className="group rounded-full p-2 h-auto w-auto"
+                            className="group rounded-full p-2 h-auto w-auto border border-black/10 dark:border-white/10"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -190,7 +190,7 @@ export default function SwapPage() {
                     Swap now
                 </Button>
             </div>
-            <div className="w-full max-w-lg mx-auto mt-4">
+            <div className="w-full max-w-lg mx-auto mt-4 border border-black/10 dark:border-white/10 rounded-2xl">
                 <SwapDetailsAccordion />
             </div>
         </div>

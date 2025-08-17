@@ -13,7 +13,7 @@ interface TokenInputProps {
 
 export function TokenInput({ label, chain, token, onTokenSelectClick, isFromInput, value, onValueChange }: TokenInputProps) {
     return (
-        <div className="bg-muted/60 p-4 rounded-xl space-y-2">
+        <div className="bg-muted/60 p-4 rounded-xl space-y-2 border border-black/10 dark:border-white/10">
             <div className="flex justify-between items-center">
                 <div>
                     <div className="flex text-sm">
@@ -39,7 +39,7 @@ export function TokenInput({ label, chain, token, onTokenSelectClick, isFromInpu
                 <Button
                     onClick={onTokenSelectClick}
                     variant="secondary"
-                    className="rounded-full shrink-0 flex items-center gap-2 p-2 pe-4"
+                    className="rounded-full shrink-0 flex items-center gap-2 p-2 pe-4 border border-black/10 dark:border-white/10"
                 >
                     <img src={token.logo} alt={token.name} className="w-8 h-8 rounded-full" />
                     <div className="flex flex-col items-start">
@@ -49,7 +49,7 @@ export function TokenInput({ label, chain, token, onTokenSelectClick, isFromInpu
                 </Button>
             </div>
 
-            <hr className="border-muted/50" />
+            <hr className="border border-black/5 dark:border-white/5" />
 
             <div className="flex justify-between items-center text-xs text-muted-foreground">
                 <span>USD 0</span>

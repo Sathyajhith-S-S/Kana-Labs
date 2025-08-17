@@ -57,7 +57,7 @@ export function OrderbookPanel() {
                     <Row key={`a-${i}`} price={p} size={s} sum={sum} side="ask" maxSum={maxSum} />
                 ))}
 
-                <div className="flex items-center gap-1 px-3 py-1 my-1 border-y border-black/10 dark:border-white/10 text-md font-semibold text-emerald-500">
+                <div className="flex items-center gap-1 px-3 py-1 border-y border-black/10 dark:border-white/10 text-md font-semibold text-emerald-500">
                     <span>118,302.50</span>
                     <FontAwesomeIcon icon={faArrowUp} color="#10b981" size="xs" />
                 </div>

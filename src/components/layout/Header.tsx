@@ -30,7 +30,7 @@ export function Header() {
     const { theme, toggleTheme } = useTheme();
 
     return (
-        <header className="fixed top-0 left-0 right-0 bg-card backdrop-blur-sm z-50">
+        <header className="fixed top-0 left-0 right-0 bg-card backdrop-blur-sm z-50 border border-black/10 dark:border-white/10">
             <nav className=" px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center gap-6">
