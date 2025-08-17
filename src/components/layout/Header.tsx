@@ -105,7 +105,7 @@ export function Header() {
                                     </Button>
                                 </>
                             ) : (
-                                <Button variant="secondary" className="flex items-center border border-primary gap-2 text-primary hover:animate-bounce-subtle">
+                                <Button variant="secondary" className="flex items-center border border-black/10 dark:border-white/10 gap-2 text-primary hover:animate-bounce-subtle">
                                     <FontAwesomeIcon icon={faWallet} />
                                     <span className="font-bold text-sm">Connect Wallet</span>
                                 </Button>

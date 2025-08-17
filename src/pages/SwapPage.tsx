@@ -11,9 +11,16 @@ const SwapTypeTabs = ({ mode, onModeChange }: { mode: SwapMode; onModeChange: (m
     <div className="flex">
         <Button
             size="sm"
-            className={`me-2 border border-black/10 dark:border-white/10 flex-1 group ${mode === 'same-chain' ? 'text-foreground font-bold' : 'text-muted-foreground'}`}
             variant={mode === 'same-chain' ? 'secondary' : 'ghost'}
             onClick={() => onModeChange('same-chain')}
+            className={`
+                me-2 flex-1 group h-10
+                border-b-2
+                ${mode === 'same-chain' 
+                    ? 'text-foreground font-semibold border-primary' 
+                    : 'text-muted-foreground border-transparent'
+                }`
+            }
         >
             <FontAwesomeIcon 
                 icon={faShareNodes} 
@@ -23,9 +30,16 @@ const SwapTypeTabs = ({ mode, onModeChange }: { mode: SwapMode; onModeChange: (m
         </Button>
         <Button
             size="sm"
-            className={`flex-1 border border-black/10 dark:border-white/10 group ${mode === 'cross-chain' ? 'text-foreground font-bold' : 'text-muted-foreground'}`}
             variant={mode === 'cross-chain' ? 'secondary' : 'ghost'}
             onClick={() => onModeChange('cross-chain')}
+            className={`
+                flex-1 group h-10
+                border-b-2
+                ${mode === 'cross-chain' 
+                    ? 'text-foreground font-semibold border-primary' 
+                    : 'text-muted-foreground border-transparent'
+                }`
+            }
         >
             <FontAwesomeIcon 
                 icon={faHexagonNodes} 
