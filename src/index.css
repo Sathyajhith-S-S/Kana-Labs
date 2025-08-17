@@ -1,10 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&family=Urbanist:wght@700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&family=Urbanist:wght@700&display=swap');
-
     :root {
         /* Fonts */
         --font-manrope: 'Manrope', sans-serif;
@@ -36,5 +36,22 @@
     body {
         @apply bg-background text-foreground;
         font-family: var(--font-manrope);
+    }
+}
+
+@layer utilities {
+    @keyframes bounce-subtle {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-4px);
+        }
+    }
+    @keyframes ring {
+        10%, 90% { transform: rotate(-10deg); }
+        20%, 80% { transform: rotate(10deg); }
+        30%, 50%, 70% { transform: rotate(-10deg); }
+        40%, 60% { transform: rotate(10deg); }
     }
 }

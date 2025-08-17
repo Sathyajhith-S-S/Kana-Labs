@@ -17,7 +17,7 @@ export function TokenInput({ label, chain, token, onTokenSelectClick, isFromInpu
             <div className="flex justify-between items-center">
                 <div>
                     <div className="flex text-sm">
-                        <p className="text-muted-foreground">{label}&nbsp;</p>
+                        <p className="text-muted-foreground">{label}&nbsp;&nbsp;</p>
                         <a className="text-primary hover:underline cursor-pointer">
                             Connect Wallet
                         </a>

@@ -8,23 +8,29 @@ import { Token, TOKENS, APTOS, USDC } from "@/lib/tokens";
 type SwapMode = 'same-chain' | 'cross-chain';
 
 const SwapTypeTabs = ({ mode, onModeChange }: { mode: SwapMode; onModeChange: (mode: SwapMode) => void; }) => (
-    <div className="">
+    <div className="flex">
         <Button
             size="sm"
-            className={`me-2 flex-1 ${mode === 'same-chain' ? 'text-foreground' : 'text-muted-foreground'}`}
+            className={`me-2 flex-1 group ${mode === 'same-chain' ? 'text-foreground font-bold' : 'text-muted-foreground'}`}
             variant={mode === 'same-chain' ? 'secondary' : 'ghost'}
             onClick={() => onModeChange('same-chain')}
         >
-            <FontAwesomeIcon icon={faShareNodes} className="me-2" />
+            <FontAwesomeIcon 
+                icon={faShareNodes} 
+                className="me-2 transition-transform duration-300 group-hover:rotate-360" 
+            />
             Same-chain
         </Button>
         <Button
             size="sm"
-            className={`flex-1 ${mode === 'cross-chain' ? 'text-foreground' : 'text-muted-foreground'}`}
+            className={`flex-1 group ${mode === 'cross-chain' ? 'text-foreground font-bold' : 'text-muted-foreground'}`}
             variant={mode === 'cross-chain' ? 'secondary' : 'ghost'}
             onClick={() => onModeChange('cross-chain')}
         >
-            <FontAwesomeIcon icon={faHexagonNodes} className="me-2" />
+            <FontAwesomeIcon 
+                icon={faHexagonNodes} 
+                className="me-2 transition-transform duration-300 group-hover:rotate-360" 
+            />
             Cross-chain
         </Button>
     </div>
@@ -39,7 +45,7 @@ const SwapDetailsAccordion = () => {
                 onClick={() => setIsOpen(!isOpen)}
                 className="w-full flex justify-between items-center p-3 text-sm font-medium"
             >
-                <span className="ms-4 text-lg font-heading">Additional details</span>
+                <h2 className="ms-4 font-heading text-muted-foreground font-bold text-lg">Additional details</h2>
                 <FontAwesomeIcon
                     icon={faChevronDown}
                     className={`transition-transform me-4 duration-200 ${isOpen ? 'rotate-180' : ''}`}
@@ -113,15 +119,15 @@ export default function SwapPage() {
     };
 
     return (
-        <div className="container mx-auto flex flex-col items-center p-4 pt-6">
+        <div className="container mx-auto flex flex-col items-center p-4">
             <div className="w-full max-w-lg mx-auto bg-card rounded-2xl p-4 sm:p-6 space-y-6 shadow-lg">
                 <SwapTypeTabs mode={swapMode} onModeChange={handleModeChange} />
                 <div className="flex items-center justify-between">
-                    <h2 className="font-heading font-semibold">
+                    <h2 className="font-heading text-muted-foreground font-bold text-lg">
                         {swapMode === 'same-chain' ? 'Same-chain Swap' : 'Cross-chain Swap'}
                     </h2>
                     <div className="flex items-center gap-5 text-muted-foreground">
-                        {swapMode === 'cross-chain' && <span className="text-primary text-sm">Redeem</span>}
+                        {swapMode === 'cross-chain' && <span className="text-primary text-sm cursor-pointer hover:text-foreground">Redeem</span>}
                         <FontAwesomeIcon icon={faArrowsRotate} size='sm' className="cursor-pointer hover:text-foreground text-primary" />
                         <FontAwesomeIcon icon={faGear} size='sm' className="cursor-pointer hover:text-foreground text-primary" />
                     </div>
@@ -179,7 +185,7 @@ export default function SwapPage() {
                 <Button
                     size="lg"
                     className="w-full h-14 text-lg font-bold bg-background text-primary border-primary border border-b-4 
-                    rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 hover:bg-background"
+                    rounded-lg shadow-lg hover:shadow-xl hover:animate-bounce-subtle hover:bg-background"
                 >
                     Swap now
                 </Button>
