@@ -15,8 +15,8 @@ const NavLink = ({ to, children }: { to: string; children: React.ReactNode; }) =
             className={`
                 flex items-center gap-1 px-3 py-2 text-xs font-bold rounded-md 
                 transition-all duration-200
-                ${active 
-                    ? 'text-primary' 
+                ${active
+                    ? 'text-primary'
                     : 'text-muted-foreground hover:text-primary hover:-translate-y-0.5'
                 }
             `}
@@ -34,7 +34,9 @@ export function Header() {
             <nav className=" px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center gap-6">
-                        <img src={kanalabsLogo} alt="Kana Labs Logo" className="h-7 w-auto" />
+                        <a href="/swap">
+                            <img src={kanalabsLogo} alt="Kana Labs Logo" className="h-7 w-auto" />
+                        </a>
                         <div className="hidden md:flex items-center">
                             <NavLink to="/swap">
                                 <svg
@@ -80,7 +82,7 @@ export function Header() {
                     <div className="flex items-center gap-3">
                         <Button variant="secondary" className="flex items-center border border-primary gap-2 text-primary hover:animate-bounce-subtle">
                             <FontAwesomeIcon icon={faWallet} />
-                            Connect wallet
+                            <span className="font-bold">Connect Wallet</span>
                         </Button>
                         <Button variant="secondary" size="sm" className="p-2 h-auto group">
                             <svg className="group-hover:animate-ring" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
