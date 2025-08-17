@@ -1,64 +1,92 @@
-import { useState } from "react"; // 1. Import useState
-import { Button } from "@/components/ui/Button";
-
-type TradeType = 'market' | 'limit';
+import { useState } from "react";
+import { Button } from "../ui/Button";
 
 export function OrderForm() {
-    const [tradeType, setTradeType] = useState<TradeType>('limit');
+    const [price, setPrice] = useState("");
+    const [amount, setAmount] = useState("");
+    const [leverage, setLeverage] = useState(2);
 
     return (
-        <div className="space-y-4">
-            <h3 className="font-heading font-bold text-lg">Trade</h3>
+        <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg p-4 w-full">
+            <div className="flex items-center justify-between text-sm font-medium mb-4">
+                <button className="px-3 py-1 rounded-lg bg-gray-200 dark:bg-gray-700">
+                    Isolated
+                </button>
+                <button className="px-3 py-1 rounded-lg">Hedge</button>
+            </div>
 
-            <div className="grid grid-cols-2 gap-2">
-                <Button
-                    onClick={() => setTradeType('market')}
-                    variant={tradeType === 'market' ? 'secondary' : 'ghost'}
-                    size="sm"
-                >
-                    Market
-                </Button>
-                <Button
-                    onClick={() => setTradeType('limit')}
-                    variant={tradeType === 'limit' ? 'secondary' : 'ghost'}
-                    size="sm"
-                >
+            <div className="flex items-center justify-between text-sm font-medium mb-4">
+                <button className="px-3 py-1 rounded-lg bg-gray-200 dark:bg-gray-700">
+                    Open
+                </button>
+                <button className="px-3 py-1 rounded-lg">Close</button>
+            </div>
+
+            <div className="flex items-center justify-between text-sm font-medium mb-4">
+                <button className="px-3 py-1 rounded-lg bg-gray-200 dark:bg-gray-700">
                     Limit
+                </button>
+                <button className="px-3 py-1 rounded-lg">Market</button>
+            </div>
+
+            <div className="mb-4">
+                <label className="text-xs text-gray-500">Price</label>
+                <input
+                    type="number"
+                    placeholder="Enter Price"
+                    value={price}
+                    onChange={(e) => setPrice(e.target.value)}
+                    className="mt-1 w-full px-3 py-2 border rounded-lg text-sm dark:bg-gray-800"
+                />
+            </div>
+
+            <div className="mb-4">
+                <label className="text-xs text-gray-500">Amount</label>
+                <input
+                    type="number"
+                    placeholder="Enter Amount"
+                    value={amount}
+                    onChange={(e) => setAmount(e.target.value)}
+                    className="mt-1 w-full px-3 py-2 border rounded-lg text-sm dark:bg-gray-800"
+                />
+            </div>
+
+            <div className="mb-4">
+                <label className="text-xs text-gray-500">Leverage: {leverage}x</label>
+                <input
+                    type="range"
+                    min="1"
+                    max="50"
+                    value={leverage}
+                    onChange={(e) => setLeverage(parseInt(e.target.value))}
+                    className="w-full"
+                />
+            </div>
+
+            <div className="flex gap-2 mb-4">
+                <Button
+                    size="lg"
+                    className="w-full h-10 text-md font-bold bg-background text-primary border-primary border border-b-4 
+                    rounded-lg shadow-lg hover:shadow-xl hover:animate-bounce-subtle hover:bg-background"
+                >
+                    Connect Wallet
                 </Button>
             </div>
 
-            <div className="space-y-3">
-                <div>
-                    <label htmlFor="price" className="text-xs text-muted-foreground">Price</label>
-                    <input
-                        id="price"
-                        type="text"
-                        placeholder="0.00"
-                        className="w-full bg-muted p-2 rounded-md mt-1 focus:outline-none focus:ring-2 focus:ring-primary"
-                        disabled={tradeType === 'market'}
-                    />
+            <div className="text-xs text-gray-500 space-y-1">
+                <div className="flex justify-between">
+                    <span>Estimated Margin</span>
+                    <span>$120.59</span>
                 </div>
-                <div>
-                    <label htmlFor="amount" className="text-xs text-muted-foreground">Amount</label>
-                    <input
-                        id="amount"
-                        type="text"
-                        placeholder="0.00"
-                        className="w-full bg-muted p-2 rounded-md mt-1 focus:outline-none focus:ring-2 focus:ring-primary"
-                    />
+                <div className="flex justify-between">
+                    <span>Estimated Fees</span>
+                    <span>0.035%</span>
+                </div>
+                <div className="flex justify-between">
+                    <span>Slippage</span>
+                    <span>0.01%</span>
                 </div>
             </div>
-
-            <div className="grid grid-cols-2 gap-2">
-                <Button className="bg-green-600 hover:bg-green-700 text-white">
-                    Buy / Long
-                </Button>
-                <Button className="bg-red-600 hover:bg-red-700 text-white">
-                    Sell / Short
-                </Button>
-            </div>
-
-            <Button variant="outline" className="w-full">Sign In</Button>
         </div>
     );
 }
