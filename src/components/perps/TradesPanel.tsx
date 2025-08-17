@@ -27,7 +27,7 @@ export function TradesPanel() {
 
             <div className="flex-grow overflow-auto text-xs">
                 {rows.map((r, i) => (
-                    <div key={i} className="grid grid-cols-3 px-3 py-1.5 border-t border-black/10 dark:border-white/10 items-center">
+                    <div key={i} className="hover:bg-muted cursor-pointer grid grid-cols-3 px-3 py-1.5 border-t border-black/10 dark:border-white/10 items-center">
                         <div className={r.side === "buy" ? "text-emerald-500 font-medium" : "text-red-500 font-medium"}>
                             {r.price.toFixed(2)}
                         </div>

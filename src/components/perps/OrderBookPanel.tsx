@@ -10,7 +10,10 @@ const Row = ({ price, size, sum, side, maxSum }: { price: number; size: number; 
     const fillClass = side === "ask" ? "bg-red-500/10" : "bg-emerald-500/10";
 
     return (
-        <div className="relative grid grid-cols-3 text-[10px] px-3 py-1.5">
+        <div className={`
+                relative grid grid-cols-3 text-[10px] px-3 py-1.5 transition-colors cursor-pointer
+                ${side === "ask" ? "hover:bg-red-500/10" : "hover:bg-emerald-500/10"}
+            `}>
             <div className={`${fillClass} absolute inset-y-0 left-0`} style={{ width: `${pct}%` }} />
             <div className={`relative ${side === "ask" ? "text-red-500" : "text-emerald-500"}`}>{price.toFixed(2)}</div>
             <div className="relative text-right text-foreground/80">{size.toFixed(3)}</div>

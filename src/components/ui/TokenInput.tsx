@@ -4,14 +4,13 @@ import { Token } from "@/lib/tokens";
 interface TokenInputProps {
     label: string;
     token: Token;
-    onTokenSelectClick: () => void;
     chain: Token;
     isFromInput: boolean;
     value: string;
     onValueChange?: (value: string) => void;
 }
 
-export function TokenInput({ label, chain, token, onTokenSelectClick, isFromInput, value, onValueChange }: TokenInputProps) {
+export function TokenInput({ label, chain, token, isFromInput, value, onValueChange }: TokenInputProps) {
     return (
         <div className="bg-muted/60 p-4 rounded-xl space-y-2 border border-black/10 dark:border-white/10">
             <div className="flex justify-between items-center">
@@ -37,7 +36,6 @@ export function TokenInput({ label, chain, token, onTokenSelectClick, isFromInpu
                         }} />
                 </div>
                 <Button
-                    onClick={onTokenSelectClick}
                     variant="secondary"
                     className="rounded-full shrink-0 flex items-center gap-2 p-2 pe-4 border border-black/10 dark:border-white/10"
                 >

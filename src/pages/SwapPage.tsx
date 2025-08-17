@@ -142,7 +142,6 @@ export default function SwapPage() {
                         label="Pay from"
                         token={fromToken}
                         chain={chain}
-                        onTokenSelectClick={() => { }}
                         isFromInput={true}
                         value={fromValue}
                         onValueChange={setFromValue}
@@ -177,7 +176,6 @@ export default function SwapPage() {
                         label="Receive to"
                         token={toToken}
                         chain={chain}
-                        onTokenSelectClick={() => { }}
                         isFromInput={false}
                         value={''}
                     />
