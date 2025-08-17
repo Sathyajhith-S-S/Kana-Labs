@@ -1,76 +1,69 @@
 import { useMemo } from "react";
 import { CardShell } from "./CardShell";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
 type Side = "ask" | "bid";
 
-function Row({ price, size, sum, side }: { price: number; size: number; sum: number; side: Side }) {
-    const pct = Math.min(sum / 100, 1);
-    const fillClass =
-        side === "ask" ? "bg-red-500/10 dark:bg-red-500/20" : "bg-emerald-500/10 dark:bg-emerald-500/20";
+const Row = ({ price, size, sum, side, maxSum }: { price: number; size: number; sum: number; side: Side; maxSum: number; }) => {
+    const pct = (sum / maxSum) * 100;
+    const fillClass = side === "ask" ? "bg-red-500/10" : "bg-emerald-500/10";
 
     return (
-        <div className="relative">
-            <div className={`${fillClass} absolute inset-y-0 right-0`} style={{ width: `${pct * 100}%` }} />
-            <div className="relative grid grid-cols-3 text-xs px-3 py-1.5">
-                <div className={side === "ask" ? "text-red-500 font-medium" : "text-emerald-500 font-medium"}>
-                    {price.toFixed(3)}
-                </div>
-                <div className="text-foreground/80">{size.toFixed(3)}</div>
-                <div className="text-muted-foreground">{sum.toFixed(3)}</div>
-            </div>
+        <div className="relative grid grid-cols-3 text-[10px] px-3 py-1.5">
+            <div className={`${fillClass} absolute inset-y-0 left-0`} style={{ width: `${pct}%` }} />
+            <div className={`relative ${side === "ask" ? "text-red-500" : "text-emerald-500"}`}>{price.toFixed(2)}</div>
+            <div className="relative text-right text-foreground/80">{size.toFixed(3)}</div>
+            <div className="relative text-right text-muted-foreground">{sum.toFixed(3)}</div>
         </div>
     );
 }
 
 export function OrderbookPanel() {
-    const asks = useMemo(
-        () =>
-            [
-                [22.005, 45.082, 45.082],
-                [22.0, 30.214, 75.296],
-                [21.995, 18.11, 93.406],
-                [21.99, 11.114, 104.52],
-                [21.985, 9.85, 114.37],
-            ] as [number, number, number][],
-        []
-    );
+    const asks = useMemo(() => [
+        [118305.50, 0.05, 0.05],
+        [118308.00, 0.10, 0.15],
+        [118310.00, 0.20, 0.35],
+        [118312.50, 0.15, 0.50],
+        [118315.00, 0.25, 0.75],
+        [118325.00, 0.30, 0.80]
+    ] as [number, number, number][], []);
 
-    const bids = useMemo(
-        () =>
-            [
-                [21.98, 14.312, 14.312],
-                [21.975, 22.003, 36.315],
-                [21.97, 10.441, 46.756],
-                [21.965, 6.12, 52.876],
-                [21.96, 3.89, 56.766],
-            ] as [number, number, number][],
-        []
-    );
+    const bids = useMemo(() => [
+        [118300.00, 0.12, 0.12],
+        [118298.50, 0.08, 0.20],
+        [118295.00, 0.25, 0.45],
+        [118292.50, 0.18, 0.63],
+        [118290.00, 0.30, 0.93],
+        [118280.00, 0.20, 0.95]
+    ] as [number, number, number][], []);
+
+    const maxSum = useMemo(() => {
+        const lastAskSum = asks[asks.length - 1]?.[2] ?? 0;
+        const lastBidSum = bids[bids.length - 1]?.[2] ?? 0;
+        return Math.max(lastAskSum, lastBidSum);
+    }, [asks, bids]);
 
     return (
-        <CardShell title="Orderbook">
-            <div className="grid grid-cols-3 text-[10px] uppercase tracking-wide text-muted-foreground px-3 py-2">
-                <div>
-                    Price <br />
-                    (USDT)
-                </div>
-                <div>
-                    Size <br />
-                    (BTC)
-                </div>
-                <div>
-                    Sum <br />
-                    (BTC)
-                </div>
+        <CardShell title="Orderbook" className="flex flex-col">
+            <div className="grid grid-cols-3 text-[10px] tracking-wide px-3 py-2 border-b border-black/10 dark:border-white/10">
+                <div>Price <br /><span className="text-muted-foreground">(USDT)</span></div>
+                <div className="text-right">Size <br /><span className="text-muted-foreground">(BTC)</span></div>
+                <div className="text-right">Sum <br /><span className="text-muted-foreground">(BTC)</span></div>
             </div>
 
-            <div className="max-h-[260px] overflow-auto">
-                {asks.map(([p, s, sum], i) => (
-                    <Row key={`a-${i}`} price={p} size={s} sum={sum} side="ask" />
+            <div className="flex-grow overflow-auto">
+                {asks.slice().reverse().map(([p, s, sum], i) => (
+                    <Row key={`a-${i}`} price={p} size={s} sum={sum} side="ask" maxSum={maxSum} />
                 ))}
-                <div className="px-3 py-2 text-center border-y text-xl font-semibold">2345.5</div>
+
+                <div className="flex items-center gap-1 px-3 py-1 my-1 border-y border-black/10 dark:border-white/10 text-md font-semibold text-emerald-500">
+                    <span>118,302.50</span>
+                    <FontAwesomeIcon icon={faArrowUp} color="#10b981" size="xs" />
+                </div>
+
                 {bids.map(([p, s, sum], i) => (
-                    <Row key={`b-${i}`} price={p} size={s} sum={sum} side="bid" />
+                    <Row key={`b-${i}`} price={p} size={s} sum={sum} side="bid" maxSum={maxSum} />
                 ))}
             </div>
         </CardShell>

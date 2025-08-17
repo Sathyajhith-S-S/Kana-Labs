@@ -14,9 +14,9 @@ export function CardShell({ title, right, children, className = "" }: Props) {
             ${className}
         `}>
             {(title || right) && (
-                <div className="flex items-center justify-between px-4 py-3 border-b">
+                <div className="flex items-center justify-between px-3 py-3 border-b border-black/10 dark:border-white/10">
                     {title ? (
-                        <h3 className="text-sm font-semibold text-foreground/90">{title}</h3>
+                        <h3 className="text-xs font-semibold text-foreground/90">{title}</h3>
                     ) : (
                         <div />
                     )}
