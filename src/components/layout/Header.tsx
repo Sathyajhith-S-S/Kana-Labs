@@ -6,21 +6,31 @@ import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleInfo, faCircleUser, faMoneyBillTransfer, faStar, faWallet } from "@fortawesome/free-solid-svg-icons";
 
-const NavLink = ({ to, children }: { to: string; children: React.ReactNode; }) => {
+const NavLink = ({ to, children, disabled = false }: { to: string; children: React.ReactNode; disabled?: boolean; }) => {
     const location = useLocation();
     const active = location.pathname === to;
+
+    const classes = `
+        flex items-center gap-1 px-3 py-2 text-xs font-bold rounded-md 
+        transition-all duration-200
+    `;
+
+    if (disabled) {
+        return (
+            <span className={`${classes} text-muted-foreground/50 cursor-not-allowed`}>
+                {children}
+            </span>
+        );
+    }
 
     return (
         <Link
             to={to}
-            className={`
-                flex items-center gap-1 px-3 py-2 text-xs font-bold rounded-md 
-                transition-all duration-200
-                ${active
-                    ? 'text-primary'
-                    : 'text-muted-foreground hover:text-primary hover:-translate-y-0.5'
-                }
-            `}
+            className={`${classes} ${
+                active 
+                ? 'text-primary' 
+                : 'text-muted-foreground hover:text-primary hover:-translate-y-0.5'
+            }`}
         >
             {children}
         </Link>
@@ -59,7 +69,7 @@ export function Header() {
                                     </svg>
                                     Swap
                                 </NavLink>
-                                <NavLink to="/trade">
+                                <NavLink to="/trade" disabled>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 3v18h18" /><path d="M7 12l5-5 5 5-5 5z" /></svg>
                                     Trade
                                 </NavLink>
@@ -67,15 +77,15 @@ export function Header() {
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 10c0-2.209 1.791-4 4-4s4 1.791 4 4-1.791 4-4 4-4-1.791-4-4z" /><path d="M6 14c0 2.209 1.791 4 4 4s4-1.791 4-4-1.791-4-4-4-4 1.791-4 4z" /></svg>
                                     Perps
                                 </NavLink>
-                                <NavLink to="/operps">
+                                <NavLink to="/operps" disabled>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><circle cx="12" cy="15" r="2" /><path d="M12 17v-5" /></svg>
                                     OPerps
                                 </NavLink>
-                                <NavLink to="/refer">
+                                <NavLink to="/refer" disabled>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="8.5" cy="7" r="4" /><line x1="20" y1="8" x2="20" y2="14" /><line x1="17" y1="11" x2="23" y2="11" /></svg>
                                     Refer
                                 </NavLink>
-                                <NavLink to="/learn">
+                                <NavLink to="/learn" disabled>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" /><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" /></svg>
                                     Learn
                                 </NavLink>
