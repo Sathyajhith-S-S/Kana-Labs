@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { TokenInput } from "@/components/ui/TokenInput";
+import { TokenInput } from "@/components/swap/TokenInput";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowsRotate, faGear, faChevronDown, faShareNodes, faHexagonNodes } from "@fortawesome/free-solid-svg-icons";
 import { Token, TOKENS, APTOS, USDC } from "@/lib/tokens";
