@@ -7,6 +7,7 @@ import ethLogo from '@/assets/eth.png';
 import solLogo from '@/assets/sol.png';
 import suiLogo from '@/assets/sui.png';
 import xrpLogo from '@/assets/xrp.png';
+import btcLogo from '@/assets/BTC.png'
 // import usdtLogo from '@/assets/usdt.png';
 import zkSyncLogo from '@/assets/zk.png';
 
@@ -25,6 +26,7 @@ export const ETH: Token = { symbol: 'ETH', name: 'Ethereum', logo: ethLogo };
 export const SOL: Token = { symbol: 'SOL', name: 'Solana', logo: solLogo };
 export const SUI: Token = { symbol: 'SUI', name: 'Sui', logo: suiLogo };
 export const XRP: Token = { symbol: 'XRP', name: 'Ripple', logo: xrpLogo };
+export const BTC: Token = { symbol: 'BTC', name: 'Bitcoin', logo: btcLogo };
 // export const USDT: Token = { symbol: 'USDT', name: 'Tether', logo: usdtLogo };
 export const ZKSYNC: Token = { symbol: 'ZKSYNC', name: 'zkSync', logo: zkSyncLogo };
 

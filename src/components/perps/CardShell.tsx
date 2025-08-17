@@ -7,7 +7,12 @@ type Props = {
 
 export function CardShell({ title, right, children, className = "" }: Props) {
     return (
-        <div className={`bg-card border rounded-lg overflow-hidden ${className}`}>
+        <div className={`
+            bg-card
+            shadow-lg rounded-lg overflow-hidden 
+            border border-black/10 dark:border-white/10
+            ${className}
+        `}>
             {(title || right) && (
                 <div className="flex items-center justify-between px-4 py-3 border-b">
                     {title ? (

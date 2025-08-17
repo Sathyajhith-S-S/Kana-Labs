@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "../ui/Button";
+import { CardShell } from "./CardShell";
 
 export function OrderForm() {
     const [price, setPrice] = useState("");
@@ -7,7 +8,7 @@ export function OrderForm() {
     const [leverage, setLeverage] = useState(2);
 
     return (
-        <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg p-4 w-full">
+        <CardShell className="p-4 w-full">
             <div className="flex items-center justify-between text-sm font-medium mb-4">
                 <button className="px-3 py-1 rounded-lg bg-gray-200 dark:bg-gray-700">
                     Isolated
@@ -87,6 +88,6 @@ export function OrderForm() {
                     <span>0.01%</span>
                 </div>
             </div>
-        </div>
+            </CardShell>
     );
 }
