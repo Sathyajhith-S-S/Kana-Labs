@@ -100,7 +100,7 @@ export function TopStatsRibbon({ defaultPair = "BTC - PERP" }: Props) {
             <div className="h-full w-full flex items-center justify-between px-5">
                 <div className="flex items-center gap-3">
                     <img src={currentPairData.logo} alt={currentPairData.alt} className="w-6 h-6" />
-                    <Select value={selectedPair} onValueChange={(value) => setSelectedPair(value as Pair)}>
+                    <Select value={selectedPair} onValueChange={(value) => setSelectedPair(value as Pair)} disabled>
                         <SelectTrigger className="text-md font-bold bg-transparent border-none focus:ring-0 p-0">
                             <SelectValue placeholder="Select pair" />
                         </SelectTrigger>

@@ -12,7 +12,7 @@ export function AccountOverviewPanel() {
     return (
         <CardShell title="Account Overview">
             <TooltipProvider>
-                <div className="p-4 space-y-2 text-[11px]">
+                <div className="p-4 space-y-2 pb-3 pt-2 text-[11px]">
                     {items.map((it) => (
                         <div key={it.label} className="flex items-center justify-between">
                             {it.tooltip ? (

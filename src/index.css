@@ -5,6 +5,10 @@
 @tailwind utilities;
 
 @layer base {
+    body {
+        @apply bg-background text-foreground;
+        font-family: var(--font-manrope);
+    }
     :root {
         /* Fonts */
         --font-manrope: 'Manrope', sans-serif;
@@ -32,16 +36,6 @@
     }
 }
 
-@layer base {
-    html {
-        overflow-y: auto;
-    }
-    body {
-        @apply bg-background text-foreground;
-        font-family: var(--font-manrope);
-    }
-}
-
 @layer utilities {
     @keyframes bounce-subtle {
         0%, 100% {
@@ -56,5 +50,27 @@
         20%, 80% { transform: rotate(10deg); }
         30%, 50%, 70% { transform: rotate(-10deg); }
         40%, 60% { transform: rotate(10deg); }
+    }
+}
+
+@layer components {
+    .slider-track {
+        @apply w-full h-1 bg-muted rounded-full;
+    }
+    .slider-thumb {
+        @apply w-4 h-4 rounded-full appearance-none cursor-pointer -mt-1.5;
+    }
+
+    input[type=range]::-webkit-slider-runnable-track {
+        @apply slider-track;
+    }
+    input[type=range]::-moz-range-track {
+        @apply slider-track;
+    }
+    input[type=range]::-webkit-slider-thumb {
+        @apply slider-thumb;
+    }
+    input[type=range]::-moz-range-thumb {
+        @apply slider-thumb;
     }
 }

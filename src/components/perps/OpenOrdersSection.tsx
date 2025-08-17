@@ -18,7 +18,7 @@ export function OpenOrdersSection() {
 
     return (
         <CardShell>
-            <div className="border-b border-white/10">
+            <div className="border-b border-black/10 dark:border-white/10">
                 <div className="flex items-center overflow-x-auto">
                     {TABS.map((t) => (
                         <button

@@ -14,17 +14,17 @@ export default function PerpsPage() {
 
     return (
         <div className="min-h-screen bg-background text-foreground p-2 sm:p-4">
-            <main className="grid grid-cols-12 gap-4">
-                <section className="col-span-7 space-y-4">
+            <main className="grid grid-cols-12 gap-2">
+                <section className="col-span-7 space-y-2">
                     <TopStatsRibbon />
                     <ChartPanel />
                 </section>
-                <section className="col-span-5 grid grid-cols-12 gap-4">
-                    <div className="col-span-5 flex flex-col gap-4">
+                <section className="col-span-5 grid grid-cols-12 gap-2">
+                    <div className="col-span-5 flex flex-col gap-2">
                         <OrderbookPanel />
                         <TradesPanel />
                     </div>
-                    <div className="col-span-7 flex flex-col gap-4">
+                    <div className="col-span-7 flex flex-col gap-2">
                         <OrderForm />
                         <AccountOverviewPanel />
                     </div>
